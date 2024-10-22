@@ -1,5 +1,10 @@
 package com.dress_size_picker.personalProject;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -34,9 +39,24 @@ public class DressOrder {
 
 		}
 		System.out.print("Please select a dress type: ");
-		Integer dressTypeKey = scanner.nextInt();
-		System.out.println("You have selected a " + dressType.get(dressTypeKey) + ".");
-		return dressType.get(dressTypeKey);
+		try {
+			Integer dressTypeKey = scanner.nextInt();
+			scanner.nextLine();
+			String selectedType = dressType.get(dressTypeKey);
+			// if customer enters invalid selection (not 1,2,3) the key returns null, since
+			// the selection does not exist as a key within the map.
+			if (selectedType == null) {
+				throw new InputMismatchException("Error");
+			}
+			System.out.println("You have selected a " + selectedType + ".");
+			return selectedType;
+		} catch (InputMismatchException e) {
+			System.out.println("Error: You selected an invalid dresstype!");
+			if (e.getMessage() == null) {
+				scanner.nextLine();
+			}
+			return getDressType();
+		}
 	}
 
 	String getDressColor(String dressType) {
@@ -46,9 +66,22 @@ public class DressOrder {
 
 		}
 		System.out.print("Please select a dress color: ");
-		Integer dressColorKey = scanner.nextInt();
-		System.out.println("You have selected a " + dressColor.get(dressColorKey) + " " + dressType + ".");
-		return dressColor.get(dressColorKey);
+		try {
+			Integer dressColorKey = scanner.nextInt();
+			scanner.nextLine();
+			String selectedColor = dressColor.get(dressColorKey);
+			if (selectedColor == null) {
+				throw new InputMismatchException("Error");
+			}
+			System.out.println("You have selected a " + selectedColor + " " + dressType + ".");
+			return selectedColor;
+		} catch (InputMismatchException e) {
+			System.out.println("Error: You selected an invalid dresscolor!");
+			if (e.getMessage() == null) {
+				scanner.nextLine();
+			}
+			return getDressColor(dressType);
+		}
 	}
 
 	String getDressSize(String dressType, String dressColor) {
@@ -58,11 +91,24 @@ public class DressOrder {
 
 		}
 		System.out.print("Please select a dress size: ");
-		Integer dressSizeKey = scanner.nextInt();
-		scanner.nextLine();
-		System.out.println("You have selected a " + dressColor + " " + dressType + " in size "
-				+ dressSize.get(dressSizeKey) + ".");
-		return dressSize.get(dressSizeKey);
+
+		try {
+			Integer dressSizeKey = scanner.nextInt();
+			scanner.nextLine();
+			String selectedSize = dressSize.get(dressSizeKey);
+			if (selectedSize == null) {
+				throw new InputMismatchException("Error");
+			}
+			System.out
+					.println("You have selected a " + dressColor + " " + dressType + " in size " + selectedSize + ".");
+			return selectedSize;
+		} catch (InputMismatchException e) {
+			System.out.println("Error: You selected an invalid dress-size!");
+			if (e.getMessage() == null) {
+				scanner.nextLine();
+			}
+			return getDressSize(dressType, dressColor);
+		}
 	}
 
 	String getCustomerName() {
@@ -76,12 +122,46 @@ public class DressOrder {
 		String customerAddress = scanner.nextLine();
 		return customerAddress;
 	}
-	
+
 	void printOrder(String dressType, String dressColor, String dressSize, String customerName,
 			String customerAddress) {
-		System.out.println("Dear " + customerName + ",");
+		System.out.println("\nDear " + customerName + ",");
 		System.out.println("You have ordered a " + dressColor + " " + dressType + " in size " + dressSize + ".");
-		System.out.println("Your order will be delivered to " + customerAddress);
+		System.out.println("Your order will be delivered to " + customerAddress + ".\n");
+	}
+
+	private static void saveOrder(String dressType, String dressColor, String dressSize, String customerName,
+			String customerAddress) {
+		String order = "";
+		order += "dressType: " + dressType + "\n";
+		order += "dressColor: " + dressColor + "\n";
+		order += "dressSize: " + dressSize + "\n";
+		order += "customerName: " + customerName + "\n";
+		order += "customerAddress: " + customerAddress + "\n\n";
+		// create a file that stores the customer order information
+		try {
+			// initialize counter
+			int counter = 1;
+			String fileName = "order.txt";
+
+			BufferedReader reader = new BufferedReader(new FileReader(fileName));
+
+			// Count the number of existing orders
+			String line;
+			while ((line = reader.readLine()) != null) {
+				if (line.startsWith("Order ")) {
+					counter++;
+				}
+			}
+			reader.close();
+			FileWriter writer = new FileWriter("order.txt", true);
+			writer.append("Order " + counter + ".\n");
+			writer.append(order);
+			writer.close();
+		} catch (IOException e) {
+			System.out.println("Something went wrong while creating the file: ");
+			e.printStackTrace();
+		}
 	}
 
 	void makeOrder() {
@@ -91,7 +171,7 @@ public class DressOrder {
 		String name = getCustomerName();
 		String address = getCustomerAddress();
 
-
 		printOrder(dressTypeSelected, dressColorSelected, dressSizeSelected, name, address);
+		saveOrder(dressTypeSelected, dressColorSelected, dressSizeSelected, name, address);
 	}
 }

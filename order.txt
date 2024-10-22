@@ -1,0 +1,28 @@
+Order 1.
+dressType: Cocktail dress
+dressColor: Navy Blue
+dressSize: M
+customerName: dwdwd
+customerAddress: 2w2d2d
+
+Order 2.
+dressType: Cocktail dress
+dressColor: Navy Blue
+dressSize: M
+customerName: cvvwv
+customerAddress: vvdv
+
+Order 3.
+dressType: Cocktail dress
+dressColor: Navy Blue
+dressSize: M
+customerName: wcc 
+customerAddress:  weve rv ef
+
+Order 4.
+dressType: Casual dress
+dressColor: Black
+dressSize: S
+customerName: NAME123
+customerAddress: Address 4321-!kk?==%
+
