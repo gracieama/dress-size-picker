@@ -40,3 +40,24 @@ dressSize: S
 customerName: Mike
 customerAddress: 123 Bar
 
+Order 7.
+dressType: Cocktail dress
+dressColor: Navy Blue
+dressSize: XL
+customerName: Mee
+customerAddress: 123 Foo
+
+Order 8.
+dressType: Cocktail dress
+dressColor: Navy Blue
+dressSize: M
+customerName: 2
+customerAddress: 2
+
+Order 9.
+dressType: Cocktail dress
+dressColor: Navy Blue
+dressSize: M
+customerName: 2
+customerAddress: 2
+

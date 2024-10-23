@@ -14,7 +14,7 @@ public class DressSizeSelector {
 		Scanner scanner = new Scanner(System.in);
 
 		try {
-			System.out.println("Enter your measurements (inches):");
+			System.out.println("Enter your measurements (inches)");
 
 			System.out.print("Bust: ");
 			bust = scanner.nextDouble();
@@ -32,31 +32,14 @@ public class DressSizeSelector {
 				System.out.println("Your dress size is " + size);
 			}
 		} catch (InputMismatchException e) {
-			System.out.println("Error: Please enter a valid number!");
+			System.out.println(Colors.error("Error: Please enter a valid number!"));
 			scanner.nextLine();
 			begin();
 		} catch (Exception e) {
 			// Catch any other unexpected exceptions
-			System.out.println("An unexpected error occurred: " + e.getMessage());
+			System.out.println(Colors.error("An unexpected error occurred: " + e.getMessage()));
 		}
 	}
-
-//		System.out.println("Enter your measurements (inches):");
-//		System.out.print("Bust: ");
-//		bust = scanner.nextDouble();
-//
-//		System.out.print("Waist: ");
-//		waist = scanner.nextDouble();
-//
-//		System.out.print("Hips: ");
-//		hips = scanner.nextDouble();
-//
-//		String size = pickSize(bust, waist, hips);
-//		if (size.equals("U")) {
-//			System.out.println("Our sizes range from S-XL. Unfortunately, we do not have a dress in your size.");
-//		} else {
-//		System.out.println("Your dress size is " + size);
-//		}
 
 
 	private String pickSize(double bust, double waist, double hips) {
@@ -157,7 +140,5 @@ public class DressSizeSelector {
 	}
 
 
-
 }
-
 

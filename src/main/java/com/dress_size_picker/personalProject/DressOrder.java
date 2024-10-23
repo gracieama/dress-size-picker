@@ -47,7 +47,7 @@ public class DressOrder {
 			System.out.println("You have selected a " + selectedType + ".");
 			return selectedType;
 		} catch (InputMismatchException e) {
-			System.out.println("Error: You selected an invalid dresstype!");
+			System.out.println(Colors.error("Error: You selected an invalid dresstype!"));
 			if (e.getMessage() == null) {
 				scanner.nextLine();
 			}
@@ -72,7 +72,7 @@ public class DressOrder {
 			System.out.println("You have selected a " + selectedColor + " " + dressType + ".");
 			return selectedColor;
 		} catch (InputMismatchException e) {
-			System.out.println("Error: You selected an invalid dresscolor!");
+			System.out.println(Colors.error("Error: You selected an invalid dresscolor!"));
 			if (e.getMessage() == null) {
 				scanner.nextLine();
 			}
@@ -99,7 +99,7 @@ public class DressOrder {
 					.println("You have selected a " + dressColor + " " + dressType + " in size " + selectedSize + ".");
 			return selectedSize;
 		} catch (InputMismatchException e) {
-			System.out.println("Error: You selected an invalid dress-size!");
+			System.out.println(Colors.error("Error: You selected an invalid dress-size!"));
 			if (e.getMessage() == null) {
 				scanner.nextLine();
 			}
@@ -121,9 +121,10 @@ public class DressOrder {
 
 	void printOrder(String dressType, String dressColor, String dressSize, String customerName,
 			String customerAddress) {
-		System.out.println("\nDear " + customerName + ",");
-		System.out.println("You have ordered a " + dressColor + " " + dressType + " in size " + dressSize + ".");
-		System.out.println("Your order will be delivered to " + customerAddress + ".\n");
+		System.out.println(Colors.warm("\nDear " + customerName + ","));
+		System.out.println(
+				Colors.warm("You have ordered a " + dressColor + " " + dressType + " in size " + dressSize + "."));
+		System.out.println(Colors.warm("Your order will be delivered to " + customerAddress + ".\n"));
 	}
 
 
