@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class OrderFile {
 	private String fileName = "order.txt";
-	
+
 	public void saveOrder(String dressType, String dressColor, String dressSize, String customerName,
 			String customerAddress) {
 		String order = "";

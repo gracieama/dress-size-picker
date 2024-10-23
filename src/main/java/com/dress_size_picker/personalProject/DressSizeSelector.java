@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class DressSizeSelector {
 
-
 	void begin() {
 		double bust;
 		double waist;
@@ -40,7 +39,6 @@ public class DressSizeSelector {
 			System.out.println(Colors.error("An unexpected error occurred: " + e.getMessage()));
 		}
 	}
-
 
 	private String pickSize(double bust, double waist, double hips) {
 		int derivedBust = pickBustSize(bust);
@@ -139,6 +137,4 @@ public class DressSizeSelector {
 		}
 	}
 
-
 }
-

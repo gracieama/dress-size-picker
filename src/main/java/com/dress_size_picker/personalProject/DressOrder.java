@@ -127,7 +127,6 @@ public class DressOrder {
 		System.out.println(Colors.warm("Your order will be delivered to " + customerAddress + ".\n"));
 	}
 
-
 	void makeOrder() {
 		String dressTypeSelected = getDressType();
 		String dressColorSelected = getDressColor(dressTypeSelected);

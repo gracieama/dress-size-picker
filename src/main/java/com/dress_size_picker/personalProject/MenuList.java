@@ -36,5 +36,5 @@ public class MenuList {
 			System.out.println(Colors.error("Error: Please select 1, 2 or 3!"));
 			selection();
 		}
-		}
 	}
+}
