@@ -1,9 +1,5 @@
 package com.dress_size_picker.personalProject;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
@@ -14,7 +10,7 @@ public class DressOrder {
 	TreeMap<Integer, String> dressType = new TreeMap<>();
 	TreeMap<Integer, String> dressColor = new TreeMap<>();
 	TreeMap<Integer, String> dressSize = new TreeMap<>();
-
+	OrderFile file = new OrderFile();
 	Scanner scanner = new Scanner(System.in);
 
 	public DressOrder() {
@@ -130,39 +126,6 @@ public class DressOrder {
 		System.out.println("Your order will be delivered to " + customerAddress + ".\n");
 	}
 
-	private static void saveOrder(String dressType, String dressColor, String dressSize, String customerName,
-			String customerAddress) {
-		String order = "";
-		order += "dressType: " + dressType + "\n";
-		order += "dressColor: " + dressColor + "\n";
-		order += "dressSize: " + dressSize + "\n";
-		order += "customerName: " + customerName + "\n";
-		order += "customerAddress: " + customerAddress + "\n\n";
-		// create a file that stores the customer order information
-		try {
-			// initialize counter
-			int counter = 1;
-			String fileName = "order.txt";
-
-			BufferedReader reader = new BufferedReader(new FileReader(fileName));
-
-			// Count the number of existing orders
-			String line;
-			while ((line = reader.readLine()) != null) {
-				if (line.startsWith("Order ")) {
-					counter++;
-				}
-			}
-			reader.close();
-			FileWriter writer = new FileWriter("order.txt", true);
-			writer.append("Order " + counter + ".\n");
-			writer.append(order);
-			writer.close();
-		} catch (IOException e) {
-			System.out.println("Something went wrong while creating the file: ");
-			e.printStackTrace();
-		}
-	}
 
 	void makeOrder() {
 		String dressTypeSelected = getDressType();
@@ -172,6 +135,6 @@ public class DressOrder {
 		String address = getCustomerAddress();
 
 		printOrder(dressTypeSelected, dressColorSelected, dressSizeSelected, name, address);
-		saveOrder(dressTypeSelected, dressColorSelected, dressSizeSelected, name, address);
+		file.saveOrder(dressTypeSelected, dressColorSelected, dressSizeSelected, name, address);
 	}
 }

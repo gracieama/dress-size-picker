@@ -26,3 +26,17 @@ dressSize: S
 customerName: NAME123
 customerAddress: Address 4321-!kk?==%
 
+Order 5.
+dressType: Corporate dress
+dressColor: Black
+dressSize: S
+customerName: Mike
+customerAddress: 123 Foo
+
+Order 6.
+dressType: Corporate dress
+dressColor: Black
+dressSize: S
+customerName: Mike
+customerAddress: 123 Bar
+

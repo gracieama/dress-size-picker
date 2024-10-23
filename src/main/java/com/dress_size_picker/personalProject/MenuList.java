@@ -29,6 +29,7 @@ public class MenuList {
 				} else if (selection.equals("2")) {
 					DressOrder order = new DressOrder();
 					order.makeOrder();
+
 				} else if (selection.equals("3")) {
 					System.out.println("*** Thank you for visiting Dress Size Picker MenuList! ***");
 					System.exit(0);
