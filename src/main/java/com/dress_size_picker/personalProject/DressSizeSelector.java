@@ -37,6 +37,8 @@ public class DressSizeSelector {
 		} catch (Exception e) {
 			// Catch any other unexpected exceptions
 			System.out.println(Colors.error("An unexpected error occurred: " + e.getMessage()));
+		} finally {
+			scanner.close();
 		}
 	}
 
