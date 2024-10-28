@@ -61,3 +61,17 @@ dressSize: M
 customerName: 2
 customerAddress: 2
 
+Order 10.
+dressType: Cocktail dress
+dressColor: Navy Blue
+dressSize: M
+customerName: F
+customerAddress: G
+
+Order 11.
+dressType: Cocktail dress
+dressColor: Black
+dressSize: XL
+customerName: Bulaba
+customerAddress: Aso rock
+

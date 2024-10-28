@@ -6,7 +6,6 @@ public class MenuList {
 
 	// declaring variables
 
-	Scanner scanner = new Scanner(System.in);
 
 	// method to display Menulist
 
@@ -20,6 +19,7 @@ public class MenuList {
 
 	public void selection() {
 
+		Scanner scanner = ConsoleInput.scanner;
 		System.out.print("Enter your selection: ");
 		String selection = scanner.nextLine();
 		// selection is valid
@@ -36,5 +36,6 @@ public class MenuList {
 			System.out.println(Colors.error("Error: Please select 1, 2 or 3!"));
 			selection();
 		}
+
 	}
 }

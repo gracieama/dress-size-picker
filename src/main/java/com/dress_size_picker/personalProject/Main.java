@@ -9,7 +9,6 @@ public class Main {
 
 		while (true) {
 			menulist.displayMenu();
-
 			menulist.selection();
 
 			System.out.println(Colors.info("\n*************What else would you like to do?***************"));

@@ -10,7 +10,7 @@ public class DressSizeSelector {
 		double waist;
 		double hips;
 
-		Scanner scanner = new Scanner(System.in);
+		Scanner scanner = ConsoleInput.scanner;
 
 		try {
 			System.out.println("Enter your measurements (inches)");
@@ -23,6 +23,7 @@ public class DressSizeSelector {
 
 			System.out.print("Hips: ");
 			hips = scanner.nextDouble();
+			scanner.nextLine();
 
 			String size = pickSize(bust, waist, hips);
 			if (size.equals("U")) {
@@ -37,12 +38,10 @@ public class DressSizeSelector {
 		} catch (Exception e) {
 			// Catch any other unexpected exceptions
 			System.out.println(Colors.error("An unexpected error occurred: " + e.getMessage()));
-		} finally {
-			scanner.close();
 		}
 	}
 
-	private String pickSize(double bust, double waist, double hips) {
+	public String pickSize(double bust, double waist, double hips) {
 		int derivedBust = pickBustSize(bust);
 		int derivedWaist = pickWaistSize(waist);
 		int derivedHips = pickHipSize(hips);

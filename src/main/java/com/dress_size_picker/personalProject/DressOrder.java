@@ -31,7 +31,7 @@ public class DressOrder {
 	String getDressType() {
 		System.out.println("We have the following dress types.");
 		for (Map.Entry<Integer, String> map : dressType.entrySet()) {
-			System.out.println(map.getKey() + ". " + map.getValue());
+			System.out.println(Colors.info(map.getKey() + ". " + map.getValue()));
 
 		}
 		System.out.print("Please select a dress type: ");
@@ -44,7 +44,7 @@ public class DressOrder {
 			if (selectedType == null) {
 				throw new InputMismatchException("Error");
 			}
-			System.out.println("You have selected a " + selectedType + ".");
+			System.out.println("You have selected a " + selectedType + ".\n");
 			return selectedType;
 		} catch (InputMismatchException e) {
 			System.out.println(Colors.error("Error: You selected an invalid dresstype!"));
@@ -58,7 +58,7 @@ public class DressOrder {
 	String getDressColor(String dressType) {
 		System.out.println("We have " + dressType + "es in the following colors:");
 		for (Map.Entry<Integer, String> map : dressColor.entrySet()) {
-			System.out.println(map.getKey() + ". " + map.getValue());
+			System.out.println(Colors.info(map.getKey() + ". " + map.getValue()));
 
 		}
 		System.out.print("Please select a dress color: ");
@@ -69,7 +69,7 @@ public class DressOrder {
 			if (selectedColor == null) {
 				throw new InputMismatchException("Error");
 			}
-			System.out.println("You have selected a " + selectedColor + " " + dressType + ".");
+			System.out.println("You have selected a " + selectedColor + " " + dressType + ".\n");
 			return selectedColor;
 		} catch (InputMismatchException e) {
 			System.out.println(Colors.error("Error: You selected an invalid dresscolor!"));
@@ -83,7 +83,7 @@ public class DressOrder {
 	String getDressSize(String dressType, String dressColor) {
 		System.out.println("We have " + dressColor + " " + dressType + "es in the following sizes:");
 		for (Map.Entry<Integer, String> map : dressSize.entrySet()) {
-			System.out.println(map.getKey() + ". " + map.getValue());
+			System.out.println(Colors.info(map.getKey() + ". " + map.getValue()));
 
 		}
 		System.out.print("Please select a dress size: ");
@@ -96,7 +96,8 @@ public class DressOrder {
 				throw new InputMismatchException("Error");
 			}
 			System.out
-					.println("You have selected a " + dressColor + " " + dressType + " in size " + selectedSize + ".");
+					.println(
+							"You have selected a " + dressColor + " " + dressType + " in size " + selectedSize + ".\n");
 			return selectedSize;
 		} catch (InputMismatchException e) {
 			System.out.println(Colors.error("Error: You selected an invalid dress-size!"));
